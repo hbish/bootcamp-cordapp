@@ -39,18 +39,18 @@ public class FlowTests {
         network.stopNodes();
     }
 
-//    @Test
-//    public void transactionConstructedByFlowUsesTheCorrectNotary() throws Exception {
-//        TokenIssueFlowInitiator flow = new TokenIssueFlowInitiator(nodeB.getInfo().getLegalIdentities().get(0), 99);
-//        CordaFuture<SignedTransaction> future = nodeA.startFlow(flow);
-//        network.runNetwork();
-//        SignedTransaction signedTransaction = future.get();
-//
-//        assertEquals(1, signedTransaction.getTx().getOutputStates().size());
-//        TransactionState output = signedTransaction.getTx().getOutputs().get(0);
-//
-//        assertEquals(network.getNotaryNodes().get(0).getInfo().getLegalIdentities().get(0), output.getNotary());
-//    }
+    @Test
+    public void transactionConstructedByFlowUsesTheCorrectNotary() throws Exception {
+        TokenIssueFlowInitiator flow = new TokenIssueFlowInitiator(nodeB.getInfo().getLegalIdentities().get(0), 99);
+        CordaFuture<SignedTransaction> future = nodeA.startFlow(flow);
+        network.runNetwork();
+        SignedTransaction signedTransaction = future.get();
+
+        assertEquals(1, signedTransaction.getTx().getOutputStates().size());
+        TransactionState output = signedTransaction.getTx().getOutputs().get(0);
+
+        assertEquals(network.getNotaryNodes().get(0).getInfo().getLegalIdentities().get(0), output.getNotary());
+    }
 //
 //    @Test
 //    public void transactionConstructedByFlowHasOneTokenStateOutputWithTheCorrectAmountAndOwner() throws Exception {
